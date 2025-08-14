@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohit - Game Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-4 bg-gray-800 bg-opacity-80 fixed w-full z-50">
+    <h1 class="text-2xl font-bold text-green-400">Mohit</h1>
+    <nav class="space-x-6 hidden md:block">
+      <a href="#home" class="hover:text-green-400">Home</a>
+      <a href="#about" class="hover:text-green-400">About</a>
+      <a href="#projects" class="hover:text-green-400">Projects</a>
+      <a href="#skills" class="hover:text-green-400">Skills</a>
+      <a href="#contact" class="hover:text-green-400">Contact</a>
+    </nav>
+    <a href="#contact" class="bg-green-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-green-400">Hire Me</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('https://via.placeholder.com/1920x1080');">
+    <div class="bg-black bg-opacity-60 p-8 rounded-xl text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Hi, I’m Mohit — Game Developer & Designer</h2>
+      <p class="text-lg text-gray-300 mb-6">I create immersive worlds, thrilling multiplayer modes, and unforgettable gameplay.</p>
+      <div class="space-x-4">
+        <a href="#projects" class="bg-green-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-400">View My Games</a>
+        <a href="#contact" class="bg-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-600">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section id="projects" class="py-20 px-8 bg-gray-900">
+    <h3 class="text-3xl font-bold text-center mb-12">Featured Work</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-800 p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/400x250" alt="Narqubis" class="rounded mb-4" />
+        <h4 class="text-xl font-semibold">Narqubis</h4>
+        <p class="text-gray-400">Tactical combat with immersive missions.</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/400x250" alt="Match Master" class="rounded mb-4" />
+        <h4 class="text-xl font-semibold">Match Master</h4>
+        <p class="text-gray-400">Fun, fast, and colorful match-3 battles.</p>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/400x250" alt="RQBis" class="rounded mb-4" />
+        <h4 class="text-xl font-semibold">RQBis</h4>
+        <p class="text-gray-400">Play, compete, and win real prizes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 px-8 bg-gray-800">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <img src="https://via.placeholder.com/400" alt="Mohit" class="rounded-lg" />
+      <div>
+        <h3 class="text-3xl font-bold mb-4">About Me</h3>
+        <p class="text-gray-300 mb-4">I’m Mohit, a passionate Game Developer with expertise in Unity, multiplayer systems, and immersive game design. I’ve developed games like Narqubis and Match Master, showcased at events like Waves 2025.</p>
+        <ul class="list-disc list-inside text-gray-400">
+          <li>Unity Engine Development (URP, AI, Multiplayer)</li>
+          <li>Game Design & Level Balancing</li>
+          <li>Battle Pass & Leaderboard Systems</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-20 px-8 bg-gray-900">
+    <h3 class="text-3xl font-bold text-center mb-12">Skills</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="bg-gray-800 p-4 rounded-lg">Unity</div>
+      <div class="bg-gray-800 p-4 rounded-lg">C#</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Shader Graph</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Blender</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Git</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Photoshop</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Multiplayer Networking</div>
+      <div class="bg-gray-800 p-4 rounded-lg">UI/UX Design</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-8 bg-gray-800">
+    <h3 class="text-3xl font-bold text-center mb-8">Contact Me</h3>
+    <form class="max-w-2xl mx-auto grid gap-4">
+      <input type="text" placeholder="Your Name" class="p-3 rounded bg-gray-700 border border-gray-600" />
+      <input type="email" placeholder="Your Email" class="p-3 rounded bg-gray-700 border border-gray-600" />
+      <textarea placeholder="Your Message" class="p-3 rounded bg-gray-700 border border-gray-600 h-32"></textarea>
+      <button class="bg-green-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-400">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center bg-gray-900 text-gray-500">
+    © 2025 Mohit. All rights reserved.
+  </footer>
+</body>
+</html>
