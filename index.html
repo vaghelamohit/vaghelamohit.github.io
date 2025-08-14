@@ -1,24 +1,106 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohit - Game Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>This is the main index page with links to all my projects.</p>
-    <ul>
-<li><a href="projects/project1/index.html">Project 1</a></li>
-<li><a href="projects/project2/index.html">Project 2</a></li>
-<li><a href="projects/project3/index.html">Project 3</a></li>
-<li><a href="projects/project4/index.html">Project 4</a></li>
-<li><a href="projects/project5/index.html">Project 5</a></li>
-<li><a href="projects/project6/index.html">Project 6</a></li>
-<li><a href="projects/project7/index.html">Project 7</a></li>
-<li><a href="projects/project8/index.html">Project 8</a></li>
-<li><a href="projects/project9/index.html">Project 9</a></li>
-<li><a href="projects/project10/index.html">Project 10</a></li>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-4 bg-gray-800 bg-opacity-80 fixed w-full z-50">
+    <h1 class="text-2xl font-bold text-green-400">Mohit</h1>
+    <nav class="space-x-6 hidden md:block">
+      <a href="#home" class="hover:text-green-400">Home</a>
+      <a href="#about" class="hover:text-green-400">About</a>
+      <a href="#projects" class="hover:text-green-400">Projects</a>
+      <a href="#skills" class="hover:text-green-400">Skills</a>
+      <a href="#contact" class="hover:text-green-400">Contact</a>
+    </nav>
+    <a href="#contact" class="bg-green-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-green-400">Hire Me</a>
+  </header>
 
-    </ul>
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+      <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+    </video>
+    <div class="bg-black bg-opacity-60 p-8 rounded-xl text-center relative z-10">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Hi, I’m Mohit — Game Developer & Designer</h2>
+      <p class="text-lg text-gray-300 mb-6">I create immersive worlds, thrilling multiplayer modes, and unforgettable gameplay.</p>
+      <div class="space-x-4">
+        <a href="#projects" class="bg-green-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-400">View My Games</a>
+        <a href="#contact" class="bg-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-600">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 px-8 bg-gray-900">
+    <h3 class="text-3xl font-bold text-center mb-12">Projects</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Loop through projects -->
+      <div class="bg-gray-800 p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://placehold.co/400x250" alt="Project 1" class="rounded mb-4" />
+        <h4 class="text-xl font-semibold">Project 1</h4>
+        <p class="text-gray-400 mb-4">Short description here.</p>
+        <a href="projects/project1/index.html" class="text-green-400 hover:underline">Read More</a>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://placehold.co/400x250" alt="Project 2" class="rounded mb-4" />
+        <h4 class="text-xl font-semibold">Project 2</h4>
+        <p class="text-gray-400 mb-4">Short description here.</p>
+        <a href="projects/project2/index.html" class="text-green-400 hover:underline">Read More</a>
+      </div>
+      <!-- Add more project cards here -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 px-8 bg-gray-800">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <img src="https://placehold.co/400" alt="Mohit" class="rounded-lg" />
+      <div>
+        <h3 class="text-3xl font-bold mb-4">About Me</h3>
+        <p class="text-gray-300 mb-4">I’m Mohit, a passionate Game Developer with expertise in Unity, multiplayer systems, and immersive game design. I’ve created games like Narqubis and Match Master.</p>
+        <ul class="list-disc list-inside text-gray-400">
+          <li>Unity Engine Development</li>
+          <li>Game Design & Level Balancing</li>
+          <li>Battle Pass & Leaderboard Systems</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-20 px-8 bg-gray-900">
+    <h3 class="text-3xl font-bold text-center mb-12">Skills</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="bg-gray-800 p-4 rounded-lg">Unity</div>
+      <div class="bg-gray-800 p-4 rounded-lg">C#</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Shader Graph</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Blender</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Git</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Photoshop</div>
+      <div class="bg-gray-800 p-4 rounded-lg">Multiplayer Networking</div>
+      <div class="bg-gray-800 p-4 rounded-lg">UI/UX Design</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-8 bg-gray-800">
+    <h3 class="text-3xl font-bold text-center mb-8">Contact Me</h3>
+    <form class="max-w-2xl mx-auto grid gap-4">
+      <input type="text" placeholder="Your Name" class="p-3 rounded bg-gray-700 border border-gray-600" />
+      <input type="email" placeholder="Your Email" class="p-3 rounded bg-gray-700 border border-gray-600" />
+      <textarea placeholder="Your Message" class="p-3 rounded bg-gray-700 border border-gray-600 h-32"></textarea>
+      <button class="bg-green-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-400">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center bg-gray-900 text-gray-500">
+    © 2025 Mohit. All rights reserved.
+  </footer>
 </body>
 </html>
