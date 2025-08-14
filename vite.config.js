@@ -2,20 +2,19 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue';
 import { fileURLToPath, URL } from "url";
 
-// https://vitejs.dev/config/
-export default ({mode}) => {
+export default ({ mode }) => {
   process.env = {
     ...process.env,
     ...loadEnv(mode, process.cwd())
   };
 
   return defineConfig({
+    base: '/Portfolio/', // 👈 Add this line
     plugins: [vue()],
     resolve: {
       alias: [
-        // thanks to https://stackoverflow.com/a/67676242/22296059 :)
         { find: "@", replacement: fileURLToPath(new URL('./src', import.meta.url)) }
-      ] 
+      ]
     },
     css: {
       preprocessorOptions: {
@@ -27,4 +26,4 @@ export default ({mode}) => {
       }
     }
   });
-} 
+}
