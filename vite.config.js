@@ -9,7 +9,7 @@ export default ({ mode }) => {
   };
 
   return defineConfig({
-    base: '/Portfolio/', // 👈 Add this line
+    base: '/', // 👈 Add this line
     plugins: [vue()],
     resolve: {
       alias: [
