@@ -11,7 +11,7 @@ export default ({mode}) => {
 
   return defineConfig({
     plugins: [vue()],
-    base: process.env.NODE_ENV === 'production' ? '/ProjectHub/' : '/',
+    base:  '/',
     resolve: {
       alias: [
         // thanks to https://stackoverflow.com/a/67676242/22296059 :)
