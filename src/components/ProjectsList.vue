@@ -1,13 +1,12 @@
 <template>
   <div>
     <div class="projects-list">
-      <template v-for="project in projects" :key="project.id"
-     :project="project">
+      <template v-for="project in projects" :key="project.id">
         <div
             @click="showDetails(project)"
             class="project-item"
             :class="{ 'wide': project.isWide, 'high': project.isHigh }">
-          <div class="project-item-image" :style="{ 'background-image': 'url(' + project.iconUrl + ')' }">
+          <div class="project-item-image" :style="{ 'background-image': 'url(' + project.baseUrl+project.iconUrl + ')' }">
           </div>
           <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
               <div class="title-text">
@@ -23,6 +22,7 @@
       :visible="showPopup"
       :title="popupTitle"
       :htmlContent="popupContent"
+      :baseUrl="baseUrl"
       :color="popupColor"
     />
   </div>
@@ -46,7 +46,8 @@ export default defineComponent({
       showPopup: false,
       popupTitle: "",
       popupColor: "",
-      popupContent: ""
+      popupContent: "",
+      baseUrl:"",
     };
   },
   methods: {
@@ -57,6 +58,7 @@ export default defineComponent({
       this.popupTitle = item.name;
       this.popupColor = item.accentColor;
       this.popupContent = item.htmlDescription;
+      this.baseUrl = item.baseUrl;
       this.showPopup = true;
       window.scrollTo(0,0);
     },

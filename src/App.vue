@@ -26,12 +26,38 @@ export default defineComponent({
 });
 
 // Preload heavy images or gifs that are used in other pages
-Helpers.preloadImages([
-  "img/projects/project-1-icon.png",
-  "img/projects/project-2-icon.png",
-  "img/projects/project-3-icon.png"
-]);
+fetch(`${import.meta.env.BASE_URL}projectList.json`)
+  .then(response => response.json())
+  .then(async projectList => {
+    const baseUrl = projectList.baseUrl;
+    const preloadImages: string[] = [];
 
+    const gameProjects = Array.isArray(projectList.gameProjects) ? projectList.gameProjects : [];
+    const otherProjects = Array.isArray(projectList.otherProjects) ? projectList.otherProjects : [];
+
+    const projectPromises = [
+      ...gameProjects.map(async (id: string) => {
+        const response = await fetch(`${baseUrl}${id}/data.json`);
+        const data = await response.json();
+        if (data.preloadImages && Array.isArray(data.preloadImages)) {
+          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${id}/${img}`));
+        }
+      }),
+      ...otherProjects.map(async (id: string) => {
+        const response = await fetch(`${baseUrl}${id}/data.json`);
+        const data = await response.json();
+        if (data.preloadImages && Array.isArray(data.preloadImages)) {
+          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${id}/${img}`));
+        }
+      })
+    ];
+
+    await Promise.all(projectPromises);
+    Helpers.preloadImages(preloadImages);
+  })
+  .catch(error => {
+    console.error('Error loading project list or preloading images:', error);
+  });
 </script>
 
 <style lang="less">

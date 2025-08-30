@@ -7,10 +7,11 @@
         <h1 class="dialog-title">{{ title }}</h1>
         <div @click="$emit('close')" class="dialog-close"><i class="fa fa-times fa-lg fa-fw"></i></div>
         <div class="dialog-content">
-          <div v-html="htmlContent"></div>
-          <div class="dialog-bottom">
-          <a @click="$emit('close')" class="dialog-close-button">Close</a>
+          <!-- Use the processed content -->
+          <div v-html="processedHtmlContent"></div>
         </div>
+        <div class="dialog-bottom">
+          <a @click="$emit('close')" class="dialog-close-button">Close</a>
         </div>
       </div>
     </div>
@@ -18,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent }  from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ProjectDetailsOverlay",
@@ -27,12 +28,19 @@ export default defineComponent({
     color: String,
     title: String,
     htmlContent: String,
+    baseUrl: String, // Added baseUrl prop
   },
-  methods: {
-    getImage: function(url: string) {
-      console.log("fetching image " + url);
-    }
-  }
+  computed: {
+    processedHtmlContent(): string {
+      // Replace relative image paths with full URLs
+      return this.htmlContent.replace(/src=["'](.*?)["']/g, (match, p1) => {
+        if (!p1.startsWith("http")) {
+          return `src="${this.baseUrl}${p1}"`;
+        }
+        return match;
+      });
+    },
+  },
 });
 </script>
 
