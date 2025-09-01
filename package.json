@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://savaliyamanish.github.io/ProjectHub",
+  "homepage": "https://mohitghostt.github.io/Portfolio",
   "private": true,
   "scripts": {
     "serve": "vite preview --port 8080",
