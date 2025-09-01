@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="right">Reach me at <a href="mailto:my@email.com">my@email.com</a> or <router-link to="/contact">through here</router-link></div>
+    <div class="right">Reach me at <a href="mailto:my@email.com">mohitghostt@gmail.com</a> or <router-link to="/contact">through here</router-link></div>
   </div>
 </template>
 
