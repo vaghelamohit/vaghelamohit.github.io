@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://mohitghostt.github.io/Portfolio",
+  "homepage": "https://savaliyamanish.github.io/ProjectHub",
   "private": true,
   "scripts": {
     "serve": "vite preview --port 8080",
@@ -29,4 +29,3 @@
     "vite-plugin-eslint": "^1.8.1"
   }
 }
-
