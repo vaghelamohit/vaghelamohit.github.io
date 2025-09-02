@@ -9,7 +9,7 @@
     My key skills include designing gameplay mechanics, optimizing performance for mobile devices, and building multiplayer features.<br/>
     I have also worked on player engagement systems such as missions, tournaments, and battle passes.<br/>
     In addition to development, I have guided junior developers and supported my team.<br/>
-    I am now looking for a <strong>Senior Unity Developer</strong> role where I can share my knowledge, support the team, and create engaging games.
+    I am now looking for a <strong>Senior Unity Developer</strong> role where I can share my knowledge,  support the team, and create engaging games.
   </div>
 </div>
 
