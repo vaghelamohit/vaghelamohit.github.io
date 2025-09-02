@@ -3,15 +3,14 @@
     <h1>Resume</h1>
 
     <div class="paragraph">
-      I'm <strong>John Matrix</strong>, a former Delta Force operative with lots of experience, lots of training and huge muscles.
-      <br />After graduating from kindergarten, I've been enrolled in the army for 25 years, where I learned to destroy things in an amazing number of ways.
-      <br />I joined the Delta Force because I thought it was Greek lessons, but I quickly adapted to this unexpected environment and became a key element.
-      <br />I love teamwork, but I can also go in solo depending on the mission requirements.
+      I'm <strong>Mohit</strong>, a Game Developer focused on crafting polished gameplay, tools, and player-facing features.
+      <br />I build and ship games end-to-end across Android and PC using Unity (C#) and Unreal (C++/Blueprints), with an emphasis on clean architecture, performance, and smooth UX.
+      <br />I collaborate closely with designers, artists, and QA to turn prototypes into fun, reliable, and scalable products.
       <br />
-      <br />Right now I'm trying to find inner peace after I've read some personal development books. I'm looking for a monk job so if you have any opportunity feel free to 
+      <br />If you're exploring opportunities or collaborations, feel free to 
       <router-link to="/contact">contact me</router-link>.
       <br />
-      <br />Besides war, I'm passionate about firearms, martial arts, explosions, push-ups and flowers.
+      <br />When I'm not shipping features, I'm profiling frames, refining feel, and automating boring stuff.
 
       <div style="margin-top:20px; margin-bottom:20px;">
         <a class="download-link" href="d/resume-en.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i> Download as PDF 🇬🇧</a>
@@ -28,77 +27,73 @@
     <div class="full-content">
       <h2>Work experience</h2>
 
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2018-2019</h4>
+      <h3>Indie Game Developer</h3>
+      <h4>2022–Present</h4>
 
-      <div>It's classified so I can't speak about it.</div>
+      <div>Designed, developed, and launched multiple mobile and PC titles from prototype to release. Built core gameplay loops, UI flows, in-app economy, analytics, and live-ops tooling. Led profiling and optimization to achieve 60 FPS on mid-tier devices.</div>
 
-      <div class="tech-stack">Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
+      <div class="tech-stack">Unity, C#, Addressables, DOTween, URP, Zenject, ScriptableObjects, Firebase/Analytics, Google Play Services</div>
 
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2015-2017</h4>
+      <h3>Gameplay Programmer — Studio (Contract)</h3>
+      <h4>2020–2022</h4>
 
-      <div>It's classified so I can't speak about it.</div>
+      <div>Implemented player abilities, enemies, AI behaviors, and level scripting. Collaborated with designers to iterate quickly on feel and balance. Built debug tools and data pipelines to accelerate iteration.</div>
 
-      <div class="tech-stack">Even more Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
+      <div class="tech-stack">Unreal Engine 4/5, C++, Blueprints, Gameplay Ability System, Behavior Trees, Perforce</div>
 
-      <h3>Operation Classified - Delta Force</h3>
-      <h4>2012-2015</h4>
+      <h3>Tools & Build Engineer</h3>
+      <h4>2019–2020</h4>
 
-      <div>It's classified so I can't speak about it.</div>
+      <div>Automated build, test, and release workflows. Created editor tooling for content creators and implemented crash/metrics dashboards.</div>
 
-      <div class="tech-stack">Firearms, knives, grenades, Hummer vehicle, parachute,...</div>
+      <div class="tech-stack">Jenkins, GitHub Actions, Python, Bash, Fastlane, Sentry, Crashlytics</div>
 
       <h2>Skills</h2>
 
       <div class="skill-set">
-        <h3>Lethal</h3>
-        <SkillRate name="Handguns" :rate="5" />
-        <SkillRate name="Rifles" :rate="5" />
-        <SkillRate name="Shotguns" :rate="5" />
-        <SkillRate name="Machineguns" :rate="5" />
-        <SkillRate name="Missile launchers" :rate="5" />
-        <SkillRate name="Knives" :rate="5" />
-        <SkillRate name="Hand to hand combat" :rate="5" />
+        <h3>Core</h3>
+        <SkillRate name="Unity / C#" :rate="5" />
+        <SkillRate name="Unreal / C++ / Blueprints" :rate="4" />
+        <SkillRate name="Gameplay Programming" :rate="5" />
+        <SkillRate name="AI & State Machines" :rate="4" />
+        <SkillRate name="UI / UX Implementation" :rate="4" />
       </div>
 
       <div class="skill-set">
-        <h3>Non-lethal</h3>
-        <SkillRate name="Sneaking" :rate="1" />
-        <SkillRate name="Negotiation" :rate="1" />
-        <SkillRate name="Seduction" :rate="1" />
-        <SkillRate name="Sense of humor" :rate="2" />
+        <h3>Tech & Performance</h3>
+        <SkillRate name="Profiling & Optimization" :rate="5" />
+        <SkillRate name="Rendering / URP" :rate="4" />
+        <SkillRate name="Asset Management / Addressables" :rate="5" />
+        <SkillRate name="Build & CI/CD Automation" :rate="4" />
+        <SkillRate name="Analytics / Live Ops" :rate="4" />
       </div>
       <div style="clear:both" />
 
       <h2>Education</h2>
 
-      <h3>Kindergarten - 1985</h3>
-      <h4>Kindergarten degree</h4>
-      <div>Specialty in bullying and fighting (58 wins, 58 K-O, 0 losses)</div>
+      <h3>B.Tech — Computer Science</h3>
+      <h4>2015–2019</h4>
+      <div>Focused on graphics, data structures, algorithms, and real-time systems. Built multiple game prototypes and a final-year gameplay AI project.</div>
 
       <h2>Languages</h2>
 
-      <h3>American</h3>
-      <div>Basic knowledge but I know lots of one-liners</div>
+      <h3>English</h3>
+      <div>Professional working proficiency</div>
 
-      <h3>That's it</h3>
-      <div>Who needs another language when you speak American?</div>
+      <h3>Hindi</h3>
+      <div>Native/Bilingual proficiency</div>
 
 
       <h2>Besides...</h2>
       <div>
-        <h3>I ❤️ Violence</h3>
-        <div>I find it really soothing to just shoot at bad guys</div>
+        <h3>Game Jams</h3>
+        <div>Participated in Ludum Dare and community jams; rapid prototyping and scope management.</div>
 
-        <h3>I 🧡 Sports</h3>
-        <div>I used to be thin but then I ingested 10 kilos of steroids and proteins a day while doing 1000 push-ups.</div>
+        <h3>Open Source</h3>
+        <div>Contributions to small Unity tooling and build scripts; sharing learnings with the community.</div>
 
-        <h3>I 💛 Politics</h3>
-        <div>I hope I can have a career here someday but I might have temper issues.</div>
-
-        <h3>I 💚 Flowers</h3>
-        <div>Especially the big ones, with the trunk and leaves.</div>
+        <h3>Writing & Mentorship</h3>
+        <div>Documenting techniques, writing postmortems, and helping newcomers get started in game dev.</div>
 
       </div>
     </div>
