@@ -35,22 +35,41 @@
 
       <h2>Skills</h2>
 
-      <div class="skill-set">
-        <h3>Core</h3>
-        <SkillRate name="Unity / C#" :rate="5" />
-        <SkillRate name="Gameplay Programming" :rate="5" />
-        <SkillRate name="AI & State Machines" :rate="4" />
-        <SkillRate name="UI / UX Implementation" :rate="4" />
+      <div class="chips-group">
+        <h3>Game Development & Tools</h3>
+        <div class="chips">
+          <span class="chip">Game Design Conceptualization</span>
+          <span class="chip">Design Patterns</span>
+          <span class="chip">Gameplay Mechanics</span>
+          <span class="chip">Level Design</span>
+          <span class="chip">Post Processing</span>
+          <span class="chip">Shader Graphs</span>
+          <span class="chip">Audio Integration</span>
+          <span class="chip">Cinemachine</span>
+          <span class="chip">Tweening</span>
+          <span class="chip">Version Control (Plastic SCM)</span>
+        </div>
       </div>
 
-      <div class="skill-set">
-        <h3>Tech & Performance</h3>
-        <SkillRate name="Profiling & Optimization" :rate="5" />
-        <SkillRate name="Rendering / URP" :rate="4" />
-        <SkillRate name="Asset Management / Addressables" :rate="5" />
-        <SkillRate name="Analytics / Live Ops" :rate="4" />
+      <div class="chips-group">
+        <h3>Game & Performance Optimization</h3>
+        <div class="chips">
+          <span class="chip">Unity Addressables</span>
+          <span class="chip">Scene Baking</span>
+          <span class="chip">Occlusion Culling</span>
+          <span class="chip">Level of Detail (LOD)</span>
+        </div>
       </div>
-      <div style="clear:both" />
+
+      <div class="chips-group">
+        <h3>Multiplayer & Networking</h3>
+        <div class="chips">
+          <span class="chip">Photon PUN2</span>
+          <span class="chip">Socket IO</span>
+          <span class="chip">REST APIs Integration</span>
+          <span class="chip">Game Monetization (IAP)</span>
+        </div>
+      </div>
 
       <h2>Education</h2>
 
@@ -68,14 +87,20 @@
 
       <h2>Languages</h2>
 
-      <h3>English</h3>
-      <div>Professional working proficiency</div>
-
-      <h3>Hindi</h3>
-      <div>Professional working proficiency</div>
-
-      <h3>Gujarati</h3>
-      <div>Mother tongue</div>
+      <div class="lang-grid">
+        <div class="lang-item">
+          <h3>English</h3>
+          <div>Professional working proficiency</div>
+        </div>
+        <div class="lang-item">
+          <h3>Hindi</h3>
+          <div>Professional working proficiency</div>
+        </div>
+        <div class="lang-item">
+          <h3>Gujarati</h3>
+          <div>Mother tongue</div>
+        </div>
+      </div>
       
       <div class="divider"></div>
       
@@ -126,5 +151,18 @@ export default defineComponent({
 .cta-row { display: flex; gap: 12px; }
 .btn-primary { padding: 10px 16px; border-radius: 10px; background: #3b82f6; color: #fff; text-decoration: none; }
 .btn-secondary { padding: 10px 16px; border-radius: 10px; background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; }
+
+.skills-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.lang-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+@media only screen and (min-width: 800px){
+  .skills-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .lang-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+
+.chips-group { margin: 12px 0 6px 0; }
+.chips-group h3 { padding-bottom: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
 
 </style>
