@@ -13,8 +13,9 @@
       <br />When I'm not shipping features, I'm profiling frames, refining feel, and automating boring stuff.
 
       <div style="margin-top:20px; margin-bottom:20px;">
-        <a class="download-link" href="d/resume-en.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i> Download as PDF 🇬🇧</a>
-        <a class="download-link" href="d/cv-fr.pdf" target="_blank"><i class="fa fa-download fa-lg fa-fw"></i> Télécharger en PDF 🇫🇷</a>
+        <a class="download-link" href="https://www.linkedin.com/in/mohit-vaghela-a63b2b59" target="_blank" rel="noopener">
+          <i class="fa fa-linkedin fa-lg fa-fw"></i> View LinkedIn profile
+        </a>
         <div style="clear:both"></div>
       </div>
     </div>
@@ -27,33 +28,23 @@
     <div class="full-content">
       <h2>Work experience</h2>
 
-      <h3>Indie Game Developer</h3>
-      <h4>2022–Present</h4>
+      <h3>Senior Game Developer — Narqubis Games Private Limited</h3>
+      <h4>Jan 2024 – Present · Full-time · Rajkot</h4>
+      <div>Leading gameplay features and shipping updates for live titles. Owning end-to-end delivery from prototyping to release with a focus on polish, performance, and player experience.</div>
 
-      <div>Designed, developed, and launched multiple mobile and PC titles from prototype to release. Built core gameplay loops, UI flows, in-app economy, analytics, and live-ops tooling. Led profiling and optimization to achieve 60 FPS on mid-tier devices.</div>
+      <div class="tech-stack">Unity (C#), Mobile/PC, Gameplay systems, UI/UX, Optimization</div>
 
-      <div class="tech-stack">Unity, C#, Addressables, DOTween, URP, Zenject, ScriptableObjects, Firebase/Analytics, Google Play Services</div>
+      <h3>Senior Game Developer — Freebird App Studio LLP</h3>
+      <h4>Jan 2016 – Dec 2023 · Full-time</h4>
+      <div>Developed and maintained multiple commercial games over 8 years. Built core loops, tools, and live-ops flows; collaborated across design, art, and QA to deliver reliable releases.</div>
 
-      <h3>Gameplay Programmer — Studio (Contract)</h3>
-      <h4>2020–2022</h4>
-
-      <div>Implemented player abilities, enemies, AI behaviors, and level scripting. Collaborated with designers to iterate quickly on feel and balance. Built debug tools and data pipelines to accelerate iteration.</div>
-
-      <div class="tech-stack">Unreal Engine 4/5, C++, Blueprints, Gameplay Ability System, Behavior Trees, Perforce</div>
-
-      <h3>Tools & Build Engineer</h3>
-      <h4>2019–2020</h4>
-
-      <div>Automated build, test, and release workflows. Created editor tooling for content creators and implemented crash/metrics dashboards.</div>
-
-      <div class="tech-stack">Jenkins, GitHub Actions, Python, Bash, Fastlane, Sentry, Crashlytics</div>
+      <div class="tech-stack">Unity (C#), Addressables, Analytics, Store integrations, Live-ops</div>
 
       <h2>Skills</h2>
 
       <div class="skill-set">
         <h3>Core</h3>
         <SkillRate name="Unity / C#" :rate="5" />
-        <SkillRate name="Unreal / C++ / Blueprints" :rate="4" />
         <SkillRate name="Gameplay Programming" :rate="5" />
         <SkillRate name="AI & State Machines" :rate="4" />
         <SkillRate name="UI / UX Implementation" :rate="4" />
@@ -64,16 +55,23 @@
         <SkillRate name="Profiling & Optimization" :rate="5" />
         <SkillRate name="Rendering / URP" :rate="4" />
         <SkillRate name="Asset Management / Addressables" :rate="5" />
-        <SkillRate name="Build & CI/CD Automation" :rate="4" />
         <SkillRate name="Analytics / Live Ops" :rate="4" />
       </div>
       <div style="clear:both" />
 
       <h2>Education</h2>
 
-      <h3>B.Tech — Computer Science</h3>
-      <h4>2015–2019</h4>
-      <div>Focused on graphics, data structures, algorithms, and real-time systems. Built multiple game prototypes and a final-year gameplay AI project.</div>
+      <h3>Department of Computer Science, Rajkot — MSc IT & CA, Computer Software</h3>
+      <h4>2014 – 2016</h4>
+      <div>Advanced coursework covering software engineering, systems design, and application development.</div>
+
+      <h3>Kamani Science & Prataprai Arts College — PGDCA, Computer Programming</h3>
+      <h4>2013 – 2014</h4>
+      <div>Postgraduate diploma focusing on programming fundamentals and practical application development.</div>
+
+      <h3>k.k.parekh commerce college — Bachelor of Commerce (B.Com.), Computer Science</h3>
+      <h4>2011 – 2013</h4>
+      <div>Foundations in computer science alongside commerce curriculum; activities and societies: debate team.</div>
 
       <h2>Languages</h2>
 
@@ -81,7 +79,10 @@
       <div>Professional working proficiency</div>
 
       <h3>Hindi</h3>
-      <div>Native/Bilingual proficiency</div>
+      <div>Professional working proficiency</div>
+
+      <h3>Gujarati</h3>
+      <div>Mother tongue</div>
 
 
       <h2>Besides...</h2>
