@@ -1,14 +1,15 @@
 <template>
   <div>
-    <h1>My Games</h1>
+    <h1>Game Projects</h1>
 
     <div style="margin-bottom: 30px;">
-      The following are some games I've worked or heavily contributed to.
+      Here are some of the games our team has created or contributed to.
     </div>
 
-    <ProjectsList v-bind:projects="projects"/>
+    <ProjectsList :projects="projects"/>
   </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -21,7 +22,7 @@ export default defineComponent({
   },
   data: function () {
     return {
-      projects: [] as Array<{ id: string; baseUrl:string; name: string; htmlDescription: string; iconUrl: string; isWide: boolean; isHigh: boolean; accentColor: string }>,
+      projects: [] as Array<{ id: string; baseUrl:string; name: string; iconUrl: string; isWide: boolean; isHigh: boolean; accentColor: string; shortDescription?: string; fullDescription?: string; links?: Array<{name: string; url: string}>; videos?: string[]; images?: string[]; preloadImages?: string[] }>,
     };
   },
   created: async function () {

@@ -21,9 +21,9 @@
       v-on:close="showPopup = false"
       :visible="showPopup"
       :title="popupTitle"
-      :htmlContent="popupContent"
       :baseUrl="baseUrl"
       :color="popupColor"
+      :projectData="popupProjectData"
     />
   </div>
 </template>
@@ -46,8 +46,8 @@ export default defineComponent({
       showPopup: false,
       popupTitle: "",
       popupColor: "",
-      popupContent: "",
       baseUrl:"",
+      popupProjectData: null as ProjectData | null,
     };
   },
   methods: {
@@ -57,8 +57,8 @@ export default defineComponent({
       // }
       this.popupTitle = item.name;
       this.popupColor = item.accentColor;
-      this.popupContent = item.htmlDescription;
       this.baseUrl = item.baseUrl;
+      this.popupProjectData = item; // Pass the full project data
       this.showPopup = true;
       window.scrollTo(0,0);
     },

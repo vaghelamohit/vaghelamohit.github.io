@@ -10,6 +10,7 @@
     "dev": "vite"
   },
   "dependencies": {
+    "swiper": "^11.2.10",
     "vue": "^3.3.6",
     "vue-router": "^4.2.5"
   },

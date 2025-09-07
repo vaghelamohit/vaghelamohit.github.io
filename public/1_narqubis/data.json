@@ -1,0 +1,36 @@
+{
+  "id": "1_narqubis",
+  "name": "NARQUBIS - A Shooter Gun Game",
+  "iconUrl": "icon.png",
+  "isWide": true,
+  "isHigh": false,
+  "accentColor": "#23bd69",
+  "preloadImages": [
+    "icon.png"
+  ],
+  "shortDescription": "Fast-paced shooter game with thrilling gunfights.",
+  "fullDescription": "NARQUBIS is an action-packed shooter gun game featuring intense battles, multiple modes, and immersive gameplay. Experience story missions, deathmatches, and new game modes with powerful weapons and competitive challenges.",
+  "links": [
+    {
+      "name": "Website",
+      "url": "https://example.com"
+    },
+    {
+      "name": "Play Store",
+      "url": "https://play.google.com/store/apps/details?id=com.narqubis.game"
+    },
+    {
+      "name": "App Store",
+      "url": "https://apps.apple.com/app/narqubis/id1234567890"
+    }
+  ],
+  "videos": [
+    "https://www.youtube.com/watch?v=aHehfWSNb_A"
+  ],
+  "images": [
+    "screenshot1.png",
+    "screenshot2.png",
+    "screenshot1.png",
+    "screenshot1.png"
+  ]
+}

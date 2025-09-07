@@ -1,16 +1,13 @@
 {
   "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
   "gameProjects": [
-    "project-1",
-    "project-2",
-    "project-3",
-    "project-4",
-    "project-5"
+    "1_narqubis",
+    "1_narqubis",
+    "1_narqubis"
   ],
   "otherProjects": [
-    "project-6",
-    "project-7",
-    "project-8",
-    "project-9"
+    "1_narqubis",
+    "1_narqubis",
+    "1_narqubis"
   ]
 }
