@@ -8,7 +8,7 @@
       <router-link to="/">About me</router-link>
       <router-link to="/game-projects">Games</router-link>
       <router-link to="/other-projects">Other Projects</router-link>
-      
+      <router-link to="/resume">Resume</router-link>
       <router-link to="/contact">Contact</router-link>
     </div>
   </div>
@@ -29,17 +29,12 @@ export default defineComponent({
 
 .header {
   width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 9;
-  backdrop-filter: saturate(120%) blur(4px);
 }
 
 .nav-bar {
   text-align: right;
   padding: 20px;
   line-height: 3em;
-  box-shadow: 0 2px 0 rgba(255,255,255,0.04);
 }
 
 a {

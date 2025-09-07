@@ -1,14 +1,13 @@
 <template>
   <div>
-    <section id="games" class="container section">
-      <div class="section-head">
-        <h2>Featured work</h2>
-        <div class="muted" v-if="projects && projects.length">{{ projects.length }} projects</div>
-      </div>
-      <ProjectsList v-bind:projects="projects"/>
-    </section>
+    <h1>My Games</h1>
+
+    <div style="margin-bottom: 30px;">
+      The following are some games I've worked or heavily contributed to.
+    </div>
+
+    <ProjectsList v-bind:projects="projects"/>
   </div>
-  
 </template>
 
 <script lang="ts">
@@ -39,44 +38,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section {
-  padding: 30px 0 50px 0;
-}
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.section-head h2 {
-  font-weight: 100;
-  font-size: 1.6em;
-  margin: 0;
-}
-
-.muted {
-  opacity: 0.7;
-  font-size: 0.95em;
-}
-
-.fade-in {
-  animation: fadeInUp 480ms ease both;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* removed hero/title styles */
-</style>

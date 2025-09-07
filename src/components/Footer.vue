@@ -1,15 +1,6 @@
 <template>
   <div class="footer">
-    <div class="left">
-      © {{ new Date().getFullYear() }} Mohit Vaghela
-    </div>
-    <div class="right">
-      <a href="mailto:mohitghostt@gmail.com">mohitghostt@gmail.com</a>
-      ·
-      <a href="https://www.linkedin.com/in/mohit-vaghela-a63b2b59" target="_blank" rel="noopener">LinkedIn</a>
-      ·
-      <router-link to="/contact">Contact</router-link>
-    </div>
+    <div class="right">Reach me at <a href="mailto:my@email.com">mohitghostt@gmail.com</a> or <router-link to="/contact">through here</router-link></div>
   </div>
 </template>
 
