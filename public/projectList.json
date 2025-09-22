@@ -1,13 +1,46 @@
 {
   "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
   "gameProjects": [
-    "1_narqubis",
-    "1_narqubis",
-    "1_narqubis"
+    {
+      "id": "1_narqubis",
+      "override": {}
+    },
+    {
+      "id": "1_narqubis",
+      "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
+      "override": {}
+    },
+    {
+      "id": "1_narqubis",
+      "override": {
+        "width": 1,
+        "height": 1,
+        "shortDescription": "Console edition with enhanced graphics"
+      }
+    }
   ],
   "otherProjects": [
-    "1_narqubis",
-    "1_narqubis",
-    "1_narqubis"
+    {
+      "id": "1_narqubis",
+      "override": {
+        "width": 1,
+        "height": 1,
+        "name": "NARQUBIS - Web Version"
+      }
+    },
+    {
+      "id": "1_narqubis",
+      "override": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "1_narqubis",
+      "override": {
+        "width": 1,
+        "height": 1
+      }
+    }
   ]
 }

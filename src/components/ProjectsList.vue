@@ -5,7 +5,7 @@
         <div
             @click="showDetails(project)"
             class="project-item"
-            :class="{ 'wide': project.isWide, 'high': project.isHigh }">
+            :class="{ [`width-${project.width}`]: true, [`height-${project.height}`]: true }">
           <div class="project-item-image" :style="{ 'background-image': 'url(' + project.baseUrl+project.iconUrl + ')' }">
           </div>
           <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
@@ -120,11 +120,23 @@ export default defineComponent({
     width: 100%;
   }
 
-  .wide {
+  .width-1 {
+    grid-column-end: span 1;
+  }
+  .width-2 {
     grid-column-end: span 2;
   }
-  .high {
+  .width-3 {
+    grid-column-end: span 3;
+  }
+  .height-1 {
+    grid-row-end: span 1;
+  }
+  .height-2 {
     grid-row-end: span 2;
+  }
+  .height-3 {
+    grid-row-end: span 3;
   }
 }
 
