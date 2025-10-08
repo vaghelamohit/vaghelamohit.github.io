@@ -310,6 +310,19 @@ a.dialog-close-button {
   max-width: 82%; /* reduce swiper width so side buttons are outside */
 }
 
+/* Give the swiper a fixed visual height and center contents vertically */
+.media-swiper :deep(.swiper) {
+  height: 70vh;
+}
+
+.media-swiper :deep(.swiper-wrapper) {
+  height: 100%;
+}
+
+.media-swiper :deep(.swiper-slide) {
+  height: 100%;
+}
+
 .side-nav {
   border: none;
   width: 44px;
@@ -331,7 +344,7 @@ a.dialog-close-button {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 100%;
   display: block;
   border-radius: 8px;
   margin: 0 auto;
@@ -342,7 +355,7 @@ a.dialog-close-button {
   max-width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
-  max-height: 70vh;
+  max-height: 100%;
   border: none;
   border-radius: 8px;
   display: block;
@@ -359,7 +372,13 @@ a.dialog-close-button {
 .media-slider :deep(.swiper-slide img),
 .media-slider :deep(.swiper-slide iframe) {
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 619px){
+  .media-swiper :deep(.swiper) {
+    height: 60vh; /* slightly shorter on small screens */
+  }
 }
 
 /* Custom Swiper Pagination */
