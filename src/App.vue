@@ -29,25 +29,27 @@ export default defineComponent({
 fetch(`${import.meta.env.BASE_URL}projectList.json`)
   .then(response => response.json())
   .then(async projectList => {
-    const baseUrl = projectList.baseUrl;
+  const globalBaseUrl = projectList.baseUrl;
     const preloadImages: string[] = [];
 
     const gameProjects = Array.isArray(projectList.gameProjects) ? projectList.gameProjects : [];
     const otherProjects = Array.isArray(projectList.otherProjects) ? projectList.otherProjects : [];
 
     const projectPromises = [
-      ...gameProjects.map(async (id: string) => {
-        const response = await fetch(`${baseUrl}${id}/data.json`);
+      ...gameProjects.map(async (project: { id: string; baseUrl?: string }) => {
+        const baseUrl = project.baseUrl || globalBaseUrl;
+        const response = await fetch(`${baseUrl}${project.id}/data.json`);
         const data = await response.json();
         if (data.preloadImages && Array.isArray(data.preloadImages)) {
-          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${id}/${img}`));
+          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
         }
       }),
-      ...otherProjects.map(async (id: string) => {
-        const response = await fetch(`${baseUrl}${id}/data.json`);
+      ...otherProjects.map(async (project: { id: string; baseUrl?: string }) => {
+        const baseUrl = project.baseUrl || globalBaseUrl;
+        const response = await fetch(`${baseUrl}${project.id}/data.json`);
         const data = await response.json();
         if (data.preloadImages && Array.isArray(data.preloadImages)) {
-          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${id}/${img}`));
+          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
         }
       })
     ];
