@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="visible">
-      <div class="overlay">
+      <div class="overlay" @click="$emit('close')">
       </div>
       <div class="dialog" :style="{ 'background-color': color }">
         <h1 class="dialog-title">{{ title }}</h1>
@@ -10,7 +10,7 @@
           <!-- Short Description -->
           <div v-if="projectData?.shortDescription" class="short-description">
             <h3>Overview</h3>
-            <p>{{ projectData.shortDescription }}</p>
+            <div v-html="projectData.shortDescription"></div>
           </div>
 
           <!-- Media Slider (Swiper) -->
@@ -42,7 +42,7 @@
           <!-- Full Description -->
           <div v-if="projectData?.fullDescription" class="full-description">
             <h3>Description</h3>
-            <p>{{ projectData.fullDescription }}</p>
+            <div v-html="projectData.fullDescription"></div>
           </div>
 
           <!-- Links -->
@@ -105,7 +105,17 @@ export default defineComponent({
       },
       currentSlideIndex: 0,
       swiperRef: null as unknown as { slidePrev: () => void; slideNext: () => void },
+      pushedState: false,
+      // handlers references for add/remove
+      keydownHandler: null as unknown as (e: KeyboardEvent) => void,
+      popstateHandler: null as unknown as () => void,
     };
+  },
+
+  created() {
+    // create bound handlers so we can remove them later
+    this.keydownHandler = (event: KeyboardEvent) => this.onGlobalKeydown(event);
+    this.popstateHandler = () => this.onPopState();
   },
   computed: {
     hasMedia(): boolean {
@@ -113,6 +123,17 @@ export default defineComponent({
     },
   },
   methods: {
+    onGlobalKeydown(event: KeyboardEvent) {
+      if (event.key === 'Escape' || event.key === 'Esc') {
+        this.$emit('close');
+      }
+    },
+    onPopState() {
+      // When the user presses the native back button, close the overlay if it's open
+      if (this.visible) {
+        this.$emit('close');
+      }
+    },
     getFullUrl(path: string): string {
       if (path.startsWith("http")) {
         return path;
@@ -195,11 +216,39 @@ export default defineComponent({
         setTimeout(() => {
           this.handleVideoPlayPause();
         }, 100);
+        // Add global listeners for ESC key and popstate (mobile back)
+  window.addEventListener('keydown', this.keydownHandler as EventListener);
+  window.addEventListener('popstate', this.popstateHandler as EventListener);
+        // Push a new history state so that back button can be used to close overlay
+        try {
+          history.pushState({ overlayOpen: true }, '');
+          this.pushedState = true;
+        } catch (e) {
+          this.pushedState = false;
+        }
       } else {
         // Pause all videos when closing
         this.pauseAllVideos();
+        // Remove listeners
+  window.removeEventListener('keydown', this.keydownHandler as EventListener);
+  window.removeEventListener('popstate', this.popstateHandler as EventListener);
+        // If we pushed a history state, go back one to restore history
+        if (this.pushedState) {
+          try {
+            history.back();
+          } catch (e) {
+            // ignore
+          }
+          this.pushedState = false;
+        }
       }
     },
+  },
+
+  beforeUnmount() {
+    // Cleanup in case component is removed while overlay open
+  window.removeEventListener('keydown', this.keydownHandler as EventListener);
+  window.removeEventListener('popstate', this.popstateHandler as EventListener);
   },
 });
 </script>

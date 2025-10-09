@@ -2,21 +2,105 @@
   "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
   "gameProjects": [
     {
-      "id": "1_narqubis",
-      "override": {}
-    },
-    {
-      "id": "1_narqubis",
+      "id": "2_uno",
       "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
       "override": {}
     },
     {
-      "id": "1_narqubis",
-      "override": {
-        "width": 1,
-        "height": 1,
-        "shortDescription": "Console edition with enhanced graphics"
-      }
+      "id": "3_knifehit",
+      "override": {}
+    },
+    {
+      "id": "4_kidgame",
+      "override": {}
+    },
+    {
+      "id": "5_sudoku",
+      "override": {}
+    },
+    {
+      "id": "6_matchpuzzle",
+      "override": {}
+    },
+    {
+      "id": "7_pipeout",
+      "override": {}
+    },
+    {
+      "id": "8_panchout",
+      "override": {}
+    },
+    {
+      "id": "9_music",
+      "override": {}
+    },
+    {
+      "id": "10_bubquest",
+      "override": {}
+    },
+    {
+      "id": "11_carbump",
+      "override": {}
+    },
+    {
+      "id": "12_coloraize",
+      "override": {}
+    },
+    {
+      "id": "13_cribbagesolitaire",
+      "override": {}
+    },
+    {
+      "id": "14_deadflap",
+      "override": {}
+    },
+    {
+      "id": "15_ginrummy",
+      "override": {}
+    },
+    {
+      "id": "16_kachufull",
+      "override": {}
+    },
+    {
+      "id": "17_kathmandu",
+      "override": {}
+    },
+    {
+      "id": "18_LoadedRunner",
+      "override": {}
+    },
+    {
+      "id": "19_Match3",
+      "override": {}
+    },
+    {
+      "id": "20_MatchMaster",
+      "override": {}
+    },
+    {
+      "id": "21_ModularsForYouKitchen",
+      "override": {}
+    },
+    {
+      "id": "22_SlackDay",
+      "override": {}
+    },
+    {
+      "id": "23_SpaceExit",
+      "override": {}
+    },
+    {
+      "id": "24_SpaceFarm",
+      "override": {}
+    },
+    {
+      "id": "25_Striker",
+      "override": {}
+    },
+    {
+      "id": "26_TeenPatti",
+      "override": {}
     }
   ],
   "otherProjects": [

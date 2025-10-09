@@ -1,5 +1,3 @@
-Clone From : https://scheefer.me
-
 # How to use
 
 1. Install
