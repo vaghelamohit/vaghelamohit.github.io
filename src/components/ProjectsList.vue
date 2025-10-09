@@ -6,8 +6,21 @@
             @click="showDetails(project)"
             class="project-item"
             :class="{ [`width-${project.width}`]: true, [`height-${project.height}`]: true }">
-          <div class="project-item-image" :style="{ 'background-image': 'url(' + project.baseUrl+project.iconUrl + ')' }">
-          </div>
+          <template v-if="project.iconUrl && project.iconUrl.toLowerCase().endsWith('.mp4')">
+            <video
+              class="project-item-video"
+              :src="getIconSrc(project)"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </template>
+          <template v-else>
+            <div class="project-item-image" :style="{ 'background-image': 'url(' + getIconSrc(project) + ')' }">
+            </div>
+          </template>
           <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
               <div class="title-text">
                 {{ project.name }}
@@ -62,6 +75,15 @@ export default defineComponent({
       this.showPopup = true;
       window.scrollTo(0,0);
     },
+    getIconSrc(project: ProjectData): string {
+      const path = project.iconUrl || '';
+      if (!path) return '';
+      if (path.startsWith('http')) return path;
+      // ensure baseUrl ends with slash
+      const base = project.baseUrl || '';
+      if (base.endsWith('/')) return base + path;
+      return base + '/' + path;
+    }
   },
 });
 </script>
@@ -83,6 +105,12 @@ export default defineComponent({
   height: 100%;
   width: 100%;
   transition: all 0.2s;
+}
+.project-item-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* behave like background-size: cover */
+  display: block;
 }
 .project-item-image:hover {
   -webkit-transform: scale(1.1);
