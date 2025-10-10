@@ -90,7 +90,6 @@ export default defineComponent({
 <style scoped>
 
 .project-item {
-  height: 300px; /* fixed height for single-column / mobile so list scrolls normally */
   margin-bottom: 20px;
   width: 100%;
   cursor: pointer;
@@ -151,12 +150,14 @@ export default defineComponent({
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    grid-auto-rows: minmax(250px, auto);
+    /* let items size themselves via aspect-ratio */
+    grid-auto-rows: auto;
   }
   /* when in grid mode, items should stretch to fill cell and not use bottom margin */
   .projects-list .project-item {
     margin: 0;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 6 / 5;
   }
 }
 
@@ -166,16 +167,19 @@ export default defineComponent({
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
-    grid-auto-rows: minmax(250px, auto);
+    grid-auto-rows: auto;
   }
   .projects-list .project-item {
     margin: 0;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 6 / 5;
   }
 }
 
 /* project item defaults (mobile): keep bottom margin so rows have spacing */
-.project-item { width: 100%; }
+.project-item { 
+  width: 100%; 
+aspect-ratio: 6 / 5;}
 
 .width-1 { grid-column-end: span 1; }
 .width-2 { grid-column-end: span 2; }
