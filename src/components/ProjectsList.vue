@@ -29,7 +29,6 @@
         </div>
       </template>
     </div>
-
     <ProjectDetailsOverlay
       v-on:close="showPopup = false"
       :visible="showPopup"
@@ -91,7 +90,7 @@ export default defineComponent({
 <style scoped>
 
 .project-item {
-  height: 300px;
+  height: 300px; /* fixed height for single-column / mobile so list scrolls normally */
   margin-bottom: 20px;
   width: 100%;
   cursor: pointer;
@@ -133,41 +132,57 @@ export default defineComponent({
   padding: 10px;
 }
 
-@media only screen and (min-width: 620px){
+/* base container centering so the grid isn't flush-left */
+.projects-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* Mobile-first: single column by default */
+.projects-list {
+  display: block;
+}
+
+/* Two columns on medium screens */
+@media only screen and (min-width: 520px){
   .projects-list {
-    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(250px, auto);
+  }
+  /* when in grid mode, items should stretch to fill cell and not use bottom margin */
+  .projects-list .project-item {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+/* Three columns on wider screens (max 3 columns) */
+@media only screen and (min-width: 900px){
+  .projects-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     grid-auto-rows: minmax(250px, auto);
   }
-
-  .project-item {
-    margin: 0px;
+  .projects-list .project-item {
+    margin: 0;
     height: 100%;
-    width: 100%;
-  }
-
-  .width-1 {
-    grid-column-end: span 1;
-  }
-  .width-2 {
-    grid-column-end: span 2;
-  }
-  .width-3 {
-    grid-column-end: span 3;
-  }
-  .height-1 {
-    grid-row-end: span 1;
-  }
-  .height-2 {
-    grid-row-end: span 2;
-  }
-  .height-3 {
-    grid-row-end: span 3;
   }
 }
 
+/* project item defaults (mobile): keep bottom margin so rows have spacing */
+.project-item { width: 100%; }
 
+.width-1 { grid-column-end: span 1; }
+.width-2 { grid-column-end: span 2; }
+.width-3 { grid-column-end: span 3; }
+
+.height-1 { grid-row-end: span 1; }
+.height-2 { grid-row-end: span 2; }
+.height-3 { grid-row-end: span 3; }
 
 </style>
