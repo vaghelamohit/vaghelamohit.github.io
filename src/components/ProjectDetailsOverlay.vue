@@ -16,14 +16,14 @@
           <!-- Media Slider (Swiper) -->
           <div v-if="hasMedia" class="media-slider">
             <h3>Media</h3>
-            <div class="media-row">
-              <button class="side-nav prev" type="button" @click="goPrev"><i class="fa fa-chevron-left"></i></button>
-              <div class="media-swiper">
                 <Swiper
+                  class="custom-swiper"
                   :modules="modules"
                   :space-between="16"
-                  :slides-per-view="1"
+                  :loop="true"
+                  :auto-height="true"
                   :pagination="pagination"
+                  :navigation="true"
                   @swiper="onSwiper"
                   @slide-change="onSlideChange"
                 >
@@ -34,9 +34,7 @@
                     <img :src="getFullUrl(image)" :alt="`Screenshot ${index + 1}`" />
                   </SwiperSlide>
                 </Swiper>
-              </div>
-              <button class="side-nav next" type="button" @click="goNext"><i class="fa fa-chevron-right"></i></button>
-            </div>
+            <div class="media-pagination"></div>
           </div>
 
           <!-- Full Description -->
@@ -98,6 +96,7 @@ export default defineComponent({
     return {
       modules: [Pagination, Navigation],
       pagination: {
+        el: '.dialog .media-pagination',
         clickable: true,
         renderBullet: function (index: number, className: string) {
           return '<span class="' + className + '">' + (index + 1) + '</span>';
@@ -106,16 +105,14 @@ export default defineComponent({
       currentSlideIndex: 0,
       swiperRef: null as unknown as { slidePrev: () => void; slideNext: () => void },
       pushedState: false,
-      // handlers references for add/remove
-      keydownHandler: null as unknown as (e: KeyboardEvent) => void,
+  keydownHandler: null as unknown as (e: KeyboardEvent) => void,
       popstateHandler: null as unknown as () => void,
     };
   },
 
   created() {
-    // create bound handlers so we can remove them later
-    this.keydownHandler = (event: KeyboardEvent) => this.onGlobalKeydown(event);
-    this.popstateHandler = () => this.onPopState();
+  this.keydownHandler = (event: KeyboardEvent) => this.onGlobalKeydown(event);
+  this.popstateHandler = () => this.onPopState();
   },
   computed: {
     hasMedia(): boolean {
@@ -129,7 +126,6 @@ export default defineComponent({
       }
     },
     onPopState() {
-      // When the user presses the native back button, close the overlay if it's open
       if (this.visible) {
         this.$emit('close');
       }
@@ -141,7 +137,6 @@ export default defineComponent({
       return `${this.baseUrl}${path}`;
     },
     getVideoEmbedUrl(videoUrl: string): string {
-      // Convert YouTube URLs to embed format with API enabled and inline/muted for autoplay
       if (videoUrl.includes("youtube.com/watch")) {
         const videoId = videoUrl.split("v=")[1]?.split("&")[0];
         return `https://www.youtube.com/embed/${videoId}?enablejsapi=1&playsinline=1&mute=1&origin=${window.location.origin}`;
@@ -168,7 +163,6 @@ export default defineComponent({
       this.swiperRef?.slideNext?.();
     },
     handleVideoPauseOnChange() {
-      // Pause all videos when slide changes. Do not autoplay on focus.
       this.pauseAllVideos();
     },
     handleVideoPlayPause() {
@@ -187,7 +181,7 @@ export default defineComponent({
         try {
           iframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
         } catch (e) {
-          // Ignore cross-origin errors
+          void 0;
         }
       });
     },
@@ -202,7 +196,7 @@ export default defineComponent({
             target.contentWindow?.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
           }, 50);
         } catch (e) {
-          // Ignore cross-origin errors
+          void 0;
         }
       }
     },
@@ -237,7 +231,7 @@ export default defineComponent({
           try {
             history.back();
           } catch (e) {
-            // ignore
+            void 0;
           }
           this.pushedState = false;
         }
@@ -296,15 +290,26 @@ h1.dialog-title {
   color: #696969;
 }
 .dialog-close {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   cursor:pointer;
   font-size: 1.2em;
   font-weight: 100;
+  z-index: 12;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 .dialog-close:hover {
-  opacity: 0.6;
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
 }
 
 .dialog-bottom {
@@ -359,23 +364,32 @@ a.dialog-close-button {
   max-width: 82%; /* reduce swiper width so side buttons are outside */
 }
 
-/* Give the swiper a fixed visual height and center contents vertically */
-.media-swiper :deep(.swiper) {
-  height: 70vh;
-}
-
-.media-swiper :deep(.swiper-wrapper) {
-  height: 100%;
-}
-
+.media-swiper :deep(.swiper),
 .media-swiper :deep(.swiper-slide) {
-  height: 100%;
+  height: auto !important; /* ✅ let content define height */
+  max-height: 80vh;
+}
+
+/* pagination positioned as a centered block below the swiper */
+.media-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  z-index: 20;
+  pointer-events: auto; /* keep bullets clickable */
+}
+
+.media-pagination :deep(.swiper-pagination-bullet) {
+  margin: 0 6px;
 }
 
 .side-nav {
   border: none;
-  width: 44px;
-  height: 44px;
+  /* responsive square buttons: keep 1:1 ratio and scale with viewport */
+  width: clamp(36px, 6vw, 56px);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: rgba(255,255,255,0.95);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -418,17 +432,21 @@ a.dialog-close-button {
   justify-content: center;
 }
 
+
+/* Force all images and iframes inside the Swiper to respect 80vh limit */
 .media-slider :deep(.swiper-slide img),
 .media-slider :deep(.swiper-slide iframe) {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
-@media only screen and (max-width: 619px){
-  .media-swiper :deep(.swiper) {
-    height: 60vh; /* slightly shorter on small screens */
-  }
-}
+
+
 
 /* Custom Swiper Pagination */
 .media-slider :deep(.swiper-pagination) {
@@ -564,6 +582,41 @@ a.dialog-close-button {
   .links-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
+}
+
+/* 🧭 Limit Swiper height */
+.custom-swiper {
+  width: 100%;
+  max-height: 80vh;
+  height: auto;           /* ✅ allow auto height based on image ratio */
+  overflow: visible;      /* ✅ don’t clip portrait images */
+}
+
+
+/* Make slide contents fit within 80% height */
+.custom-swiper :deep(.swiper-slide) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-swiper :deep(img) {
+  max-height: 80vh;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.custom-swiper :deep(iframe) {
+  max-height: 80vh;
+  max-width: 100%;
+  object-fit: contain; /* Keeps aspect ratio, no cropping */
+  border-radius: 8px;
 }
 
 
