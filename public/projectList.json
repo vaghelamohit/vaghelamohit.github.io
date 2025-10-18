@@ -1,6 +1,10 @@
 {
   "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",
   "gameProjects": [
+   {
+      "id": "1_narqubis",
+      "override": {}
+    },
     {
       "id": "2_uno",
       "baseUrl": "https://savaliyamanish.github.io/ProjectHub/",

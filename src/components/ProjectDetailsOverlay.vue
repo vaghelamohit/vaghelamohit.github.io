@@ -379,10 +379,14 @@ a.dialog-close-button {
   margin-top: 12px;
   z-index: 20;
   pointer-events: auto; /* keep bullets clickable */
+  flex-wrap: wrap; /* Allow wrapping to multiple lines */
+  max-width: 100%; /* Ensure it doesn't overflow */
 }
 
 .media-pagination :deep(.swiper-pagination-bullet) {
   margin: 0 6px;
+  flex-shrink: 0; /* Prevent bullets from shrinking too much */
+  min-width: 16px; /* Ensure minimum clickable size */
 }
 
 .side-nav {
@@ -467,6 +471,8 @@ a.dialog-close-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0; /* Prevent bullets from shrinking too much */
+  min-width: 16px; /* Ensure minimum clickable size */
 }
 
 .media-slider :deep(.swiper-pagination-bullet:hover) {

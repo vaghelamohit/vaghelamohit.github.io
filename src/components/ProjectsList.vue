@@ -30,7 +30,7 @@
       </template>
     </div>
     <ProjectDetailsOverlay
-      v-on:close="showPopup = false"
+      v-on:close="closeOverlay"
       :visible="showPopup"
       :title="popupTitle"
       :baseUrl="baseUrl"
@@ -60,6 +60,7 @@ export default defineComponent({
       popupColor: "",
       baseUrl:"",
       popupProjectData: null as ProjectData | null,
+      savedScrollPosition: 0,
     };
   },
   methods: {
@@ -67,6 +68,9 @@ export default defineComponent({
       // if (event) {
       //   alert(event.target);
       // }
+      // Save current scroll position before opening overlay
+      this.savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      
       this.popupTitle = item.name;
       this.popupColor = item.accentColor;
       this.baseUrl = item.baseUrl;
@@ -82,6 +86,13 @@ export default defineComponent({
       const base = project.baseUrl || '';
       if (base.endsWith('/')) return base + path;
       return base + '/' + path;
+    },
+    closeOverlay: function () {
+      this.showPopup = false;
+      // Restore scroll position after a short delay to ensure overlay is closed
+      setTimeout(() => {
+        window.scrollTo(0, this.savedScrollPosition);
+      }, 100);
     }
   },
 });
