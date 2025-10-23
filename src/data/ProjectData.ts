@@ -17,8 +17,9 @@ export default class ProjectData {
     videos?: string[];
     images?: string[];
     preloadImages?: string[];
+    hideName?: boolean;
 
-    constructor(id: string, baseUrl: string, name: string, iconUrl: string, accentColor = "#000000", width = 1, height = 1) {
+    constructor(id: string, baseUrl: string, name: string, iconUrl: string, accentColor = "#000000", width = 1, height = 1, hideName = false) {
         this.id = id;
         this.baseUrl = baseUrl;
         this.name = name;

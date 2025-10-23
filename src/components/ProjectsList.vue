@@ -22,7 +22,7 @@
             <div class="project-item-image" :style="{ 'background-image': 'url(' + getIconSrc(project) + ')' }">
             </div>
           </template>
-          <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
+          <div class="title-bar" v-if="!project.hideName" :style="{ 'background-color': project.accentColor + 'DD' }">
               <div class="title-text">
                 {{ project.name }}
               </div>
