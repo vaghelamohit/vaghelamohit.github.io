@@ -5,7 +5,8 @@
         <div
             @click="showDetails(project)"
             class="project-item"
-            :class="{ [`width-${project.width}`]: true, [`height-${project.height}`]: true }">
+            :class="{ [`width-${project.width}`]: true, [`height-${project.height}`]: true }"
+            :style="{ 'aspect-ratio': getProjectAspectRatio(project) }">
           <template v-if="project.iconUrl && project.iconUrl.toLowerCase().endsWith('.mp4')">
             <video
               class="project-item-video"
@@ -62,6 +63,17 @@ export default defineComponent({
       popupProjectData: null as ProjectData | null,
       savedScrollPosition: 0,
     };
+  },
+  computed: {
+    getProjectAspectRatio: function() {
+      return (project: ProjectData) => {
+        // Calculate aspect ratio based on width and height
+        // Default base ratio is 6:5, then multiply by width/height ratio
+        const baseRatio = 6 / 5; // 1.2
+        const widthHeightRatio = project.width / project.height;
+        return baseRatio * widthHeightRatio;
+      };
+    }
   },
   methods: {
     showDetails: function (item: ProjectData) {
@@ -168,7 +180,6 @@ export default defineComponent({
   .projects-list .project-item {
     margin: 0;
     height: auto;
-    aspect-ratio: 6 / 5;
   }
 }
 
@@ -183,14 +194,13 @@ export default defineComponent({
   .projects-list .project-item {
     margin: 0;
     height: auto;
-    aspect-ratio: 6 / 5;
   }
 }
 
 /* project item defaults (mobile): keep bottom margin so rows have spacing */
 .project-item { 
   width: 100%; 
-aspect-ratio: 6 / 5;}
+}
 
 .width-1 { grid-column-end: span 1; }
 .width-2 { grid-column-end: span 2; }
