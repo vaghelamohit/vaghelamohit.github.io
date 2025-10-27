@@ -13,6 +13,7 @@ export default class ProjectData {
     accentColor: string; // color of title bar 
     shortDescription?: string;
     fullDescription?: string;
+    role?: string;
     links?: ProjectLink[];
     videos?: string[];
     images?: string[];

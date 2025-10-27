@@ -43,6 +43,12 @@
             <div v-html="projectData.fullDescription"></div>
           </div>
 
+          <!-- My Role -->
+          <div v-if="projectData?.role && projectData.role.trim() !== ''" class="my-role">
+            <h3>My Role</h3>
+            <div v-html="projectData.role"></div>
+          </div>
+
           <!-- Links -->
           <div v-if="projectData?.links && projectData.links.length > 0" class="links-section">
             <h3>Links</h3>
@@ -326,12 +332,14 @@ a.dialog-close-button {
 /* Content sections */
 .short-description,
 .full-description,
+.my-role,
 .links-section {
   margin-bottom: 30px;
 }
 
 .short-description h3,
 .full-description h3,
+.my-role h3,
 .links-section h3 {
   color: #333;
   margin-bottom: 15px;
@@ -341,7 +349,8 @@ a.dialog-close-button {
 }
 
 .short-description p,
-.full-description p {
+.full-description p,
+.my-role p {
   line-height: 1.6;
   margin: 0;
 }
