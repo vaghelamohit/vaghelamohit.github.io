@@ -3,28 +3,10 @@
   "gameProjects": [
     {
       "id": "1_narqubis",
-      "override": {
-        "role": "Lead Developer"
-      }
+      "override": {}
     },
     {
       "id": "20_MatchMaster",
-      "override": {}
-    },
-    {
-      "id": "3_knifehit",
-      "override": {}
-    },
-    {
-      "id": "27_LiveMCL_Quiz",
-      "override": {}
-    },
-    {
-      "id": "5_sudoku",
-      "override": {}
-    },
-    {
-      "id": "2_uno",
       "override": {}
     },
     {
@@ -32,31 +14,15 @@
       "override": {}
     },
     {
-      "id": "26_TeenPatti",
+      "id": "30_CoinGrid",
       "override": {}
     },
     {
-      "id": "13_cribbagesolitaire",
+      "id": "41_TrafficCar",
       "override": {}
     },
     {
-      "id": "6_matchpuzzle",
-      "override": {}
-    },
-    {
-      "id": "7_pipeout",
-      "override": {}
-    },
-    {
-      "id": "15_ginrummy",
-      "override": {}
-    },
-    {
-      "id": "8_panchout",
-      "override": {}
-    },
-    {
-      "id": "10_bubquest",
+      "id": "35_Loaded_Shooter",
       "override": {}
     },
     {
@@ -64,19 +30,39 @@
       "override": {}
     },
     {
-      "id": "12_coloraize",
+      "id": "26_TeenPatti",
       "override": {}
     },
     {
-      "id": "19_Match3",
+      "id": "27_LiveMCL_Quiz",
       "override": {}
     },
     {
-      "id": "31_ColorPoint",
+      "id": "29_Boozeo",
       "override": {}
     },
     {
-      "id": "32_DontEndWord",
+      "id": "3_knifehit",
+      "override": {}
+    },
+    {
+      "id": "6_matchpuzzle",
+      "override": {}
+    },
+    {
+      "id": "2_uno",
+      "override": {}
+    },
+    {
+      "id": "7_pipeout",
+      "override": {}
+    },
+    {
+      "id": "5_sudoku",
+      "override": {}
+    },
+    {
+      "id": "8_panchout",
       "override": {}
     },
     {
@@ -88,23 +74,15 @@
       "override": {}
     },
     {
-      "id": "41_TrafficCar",
+      "id": "31_ColorPoint",
       "override": {}
     },
     {
-      "id": "18_LoadedRunner",
+      "id": "32_DontEndWord",
       "override": {}
     },
     {
-      "id": "29_Boozeo",
-      "override": {}
-    },
-    {
-      "id": "28_BibleWar",
-      "override": {}
-    },
-    {
-      "id": "35_Loaded_Shooter",
+      "id": "19_Match3",
       "override": {}
     },
     {
@@ -112,39 +90,19 @@
       "override": {}
     },
     {
-      "id": "30_CoinGrid",
-      "override": {}
-    },
-    {
-      "id": "24_SpaceFarm",
-      "override": {}
-    },
-    {
-      "id": "22_SlackDay",
-      "override": {}
-    },
-    {
-      "id": "36_Lupan",
-      "override": {}
-    },
-    {
-      "id": "37_MailBox",
-      "override": {}
-    },
-    {
       "id": "38_RollingPo",
       "override": {}
     },
     {
-      "id": "16_kachufull",
+      "id": "10_bubquest",
       "override": {}
     },
     {
-      "id": "23_SpaceExit",
+      "id": "12_coloraize",
       "override": {}
     },
     {
-      "id": "17_kathmandu",
+      "id": "18_LoadedRunner",
       "override": {}
     }
   ],

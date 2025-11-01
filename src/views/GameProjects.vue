@@ -3,7 +3,7 @@
     <h1>Game Projects</h1>
 
     <div style="margin-bottom: 30px;">
-      Here are some of the games our team has created or contributed to.
+      Here are some of the games I’ve developed or contributed to.
     </div>
 
     <ProjectsList :projects="projects"/>

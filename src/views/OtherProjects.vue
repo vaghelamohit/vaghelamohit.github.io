@@ -3,7 +3,7 @@
     <h1>Other Projects</h1>
 
     <div style="margin-bottom: 30px;">
-      Here are some web and mobile apps our team has created or contributed to.
+      Here are some of the web and mobile apps I’ve developed or contributed to.
     </div>
 
     <ProjectsList :projects="projects" />
