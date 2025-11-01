@@ -64,6 +64,10 @@ export default defineComponent({
       savedScrollPosition: 0,
     };
   },
+  mounted() {
+    // Check if there's a projectId in the route and open that project
+    this.checkRouteForProject();
+  },
   computed: {
     getProjectAspectRatio: function() {
       return (project: ProjectData) => {
@@ -76,10 +80,7 @@ export default defineComponent({
     }
   },
   methods: {
-    showDetails: function (item: ProjectData) {
-      // if (event) {
-      //   alert(event.target);
-      // }
+    openProjectOverlay: function (item: ProjectData, skipNavigation = false) {
       // Save current scroll position before opening overlay
       this.savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
       
@@ -89,6 +90,19 @@ export default defineComponent({
       this.popupProjectData = item; // Pass the full project data
       this.showPopup = true;
       window.scrollTo(0,0);
+      
+      // Navigate to project detail route if not already there
+      if (!skipNavigation) {
+        const currentPath = this.$route.path;
+        const detailPath = currentPath === '/' ? `/${item.id}` : `${currentPath}/${item.id}`;
+        this.$router.push(detailPath);
+      }
+    },
+    showDetails: function (item: ProjectData) {
+      // if (event) {
+      //   alert(event.target);
+      // }
+      this.openProjectOverlay(item, false);
     },
     getIconSrc(project: ProjectData): string {
       const path = project.iconUrl || '';
@@ -105,6 +119,45 @@ export default defineComponent({
       setTimeout(() => {
         window.scrollTo(0, this.savedScrollPosition);
       }, 100);
+      // Navigate back to list view
+      if (this.$route.params.projectId) {
+        const currentPath = this.$route.path;
+        const listPath = currentPath.split('/').slice(0, -1).join('/') || '/';
+        this.$router.push(listPath);
+      }
+    },
+    checkRouteForProject: function () {
+      const projectId = this.$route.params.projectId as string;
+      if (projectId && this.projects.length > 0) {
+        const project = this.projects.find(p => p.id === projectId);
+        if (project && !this.showPopup) {
+          // Skip navigation since we're already on the right route
+          this.openProjectOverlay(project, true);
+        }
+      }
+    }
+  },
+  watch: {
+    '$route.params.projectId': function() {
+      // Watch for route changes and update overlay accordingly
+      if (this.$route.params.projectId) {
+        this.checkRouteForProject();
+      } else if (this.showPopup) {
+        // Just close the overlay, navigation already happened
+        this.showPopup = false;
+        setTimeout(() => {
+          window.scrollTo(0, this.savedScrollPosition);
+        }, 100);
+      }
+    },
+    projects: {
+      immediate: true,
+      handler() {
+        // When projects are loaded, check if we need to open a project
+        if (this.projects.length > 0 && this.$route.params.projectId) {
+          this.checkRouteForProject();
+        }
+      }
     }
   },
 });

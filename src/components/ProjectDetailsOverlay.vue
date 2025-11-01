@@ -110,15 +110,12 @@ export default defineComponent({
       },
       currentSlideIndex: 0,
       swiperRef: null as unknown as { slidePrev: () => void; slideNext: () => void },
-      pushedState: false,
-  keydownHandler: null as unknown as (e: KeyboardEvent) => void,
-      popstateHandler: null as unknown as () => void,
+      keydownHandler: null as unknown as (e: KeyboardEvent) => void,
     };
   },
 
   created() {
-  this.keydownHandler = (event: KeyboardEvent) => this.onGlobalKeydown(event);
-  this.popstateHandler = () => this.onPopState();
+    this.keydownHandler = (event: KeyboardEvent) => this.onGlobalKeydown(event);
   },
   computed: {
     hasMedia(): boolean {
@@ -128,11 +125,6 @@ export default defineComponent({
   methods: {
     onGlobalKeydown(event: KeyboardEvent) {
       if (event.key === 'Escape' || event.key === 'Esc') {
-        this.$emit('close');
-      }
-    },
-    onPopState() {
-      if (this.visible) {
         this.$emit('close');
       }
     },
@@ -216,39 +208,20 @@ export default defineComponent({
         setTimeout(() => {
           this.handleVideoPlayPause();
         }, 100);
-        // Add global listeners for ESC key and popstate (mobile back)
-  window.addEventListener('keydown', this.keydownHandler as EventListener);
-  window.addEventListener('popstate', this.popstateHandler as EventListener);
-        // Push a new history state so that back button can be used to close overlay
-        try {
-          history.pushState({ overlayOpen: true }, '');
-          this.pushedState = true;
-        } catch (e) {
-          this.pushedState = false;
-        }
+        // Add global listeners for ESC key
+        window.addEventListener('keydown', this.keydownHandler as EventListener);
       } else {
         // Pause all videos when closing
         this.pauseAllVideos();
         // Remove listeners
-  window.removeEventListener('keydown', this.keydownHandler as EventListener);
-  window.removeEventListener('popstate', this.popstateHandler as EventListener);
-        // If we pushed a history state, go back one to restore history
-        if (this.pushedState) {
-          try {
-            history.back();
-          } catch (e) {
-            void 0;
-          }
-          this.pushedState = false;
-        }
+        window.removeEventListener('keydown', this.keydownHandler as EventListener);
       }
     },
   },
 
   beforeUnmount() {
     // Cleanup in case component is removed while overlay open
-  window.removeEventListener('keydown', this.keydownHandler as EventListener);
-  window.removeEventListener('popstate', this.popstateHandler as EventListener);
+    window.removeEventListener('keydown', this.keydownHandler as EventListener);
   },
 });
 </script>

@@ -28,14 +28,29 @@ export function createRouter(){
         component: GameView
       },
       {
+        path: '/game-projects/:projectId',
+        name: 'Game Project Detail',
+        component: GameView
+      },
+      {
         path: '/other-projects',
         name: 'Other Projects',
+        component: OtherView
+      },
+      {
+        path: '/other-projects/:projectId',
+        name: 'Other Project Detail',
         component: OtherView
       },
       {
         path: '/contact',
         name: 'Contact',
         component: ContactView
+      },
+      {
+        path: '/:projectId',
+        name: 'Game Project Detail (Root)',
+        component: GameView
       },
       {
         path: '/:pathMatch(.*)',
