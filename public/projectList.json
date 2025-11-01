@@ -3,7 +3,9 @@
   "gameProjects": [
     {
       "id": "1_narqubis",
-      "override": {}
+      "override": {
+        "role": "Lead Developer"
+      }
     },
     {
       "id": "20_MatchMaster",
