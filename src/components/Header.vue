@@ -8,8 +8,16 @@
       <router-link to="/">About me</router-link>
       <router-link to="/game-projects">Games</router-link>
       <router-link to="/other-projects">Other Projects</router-link>
-      
       <router-link to="/contact">Contact</router-link>
+      
+      <a href="/d/MohitVaghela.pdf" class="resume-link" download="Mohit_Vaghela_Resume.pdf">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Resume</span>
+      </a>
     </div>
   </div>
 </template>
@@ -91,6 +99,67 @@ a {
 
 .brand:hover .brand-text { filter: brightness(1.1); }
 
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff !important;
+  padding: 5px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+  margin-left: 20px;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.resume-link:hover::before {
+  left: 100%;
+}
+
+.resume-link:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.resume-link:active {
+  transform: translateY(0);
+}
+
+.resume-link svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.resume-link:hover svg {
+  transform: translateY(-2px);
+}
+
+.resume-link span {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+}
+
 .router-link-exact-active {
   border: 0;
   filter: brightness(1.15);
@@ -105,6 +174,18 @@ a {
     margin-left: 9px;
     margin-right: 9px;
     padding-bottom: 0px;
+  }
+
+  .resume-link {
+    padding: 4px 12px;
+    font-size: 0.85em;
+    gap: 6px;
+    margin-left: 12px;
+  }
+
+  .resume-link svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
