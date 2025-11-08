@@ -1,21 +1,33 @@
 <template>
   <transition name="fade">
-    <div v-if="visible">
-      <div class="overlay" @click="$emit('close')">
-      </div>
-      <div class="dialog" :style="{ 'background-color': color }">
-        <h1 class="dialog-title">{{ title }}</h1>
-        <div @click="$emit('close')" class="dialog-close"><i class="fa fa-times fa-lg fa-fw"></i></div>
+    <div v-if="visible" class="overlay-wrapper">
+      <div class="overlay" @click="$emit('close')"></div>
+      <div class="dialog">
+        <div class="dialog-header" :style="{ 'background': `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)` }">
+          <h1 class="dialog-title">{{ title }}</h1>
+          <button @click="$emit('close')" class="dialog-close" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
         <div class="dialog-content">
           <!-- Short Description -->
-          <div v-if="projectData?.shortDescription" class="short-description">
-            <h3>Overview</h3>
-            <div v-html="projectData.shortDescription"></div>
+          <div v-if="projectData?.shortDescription" class="content-section">
+            <h3 class="section-title">
+              <span class="section-icon">📋</span>
+              Overview
+            </h3>
+            <div class="section-content" v-html="projectData.shortDescription"></div>
           </div>
 
           <!-- Media Slider (Swiper) -->
-          <div v-if="hasMedia" class="media-slider">
-            <h3>Media</h3>
+          <div v-if="hasMedia" class="content-section media-section media-slider">
+            <h3 class="section-title">
+              <span class="section-icon">🎬</span>
+              Media
+            </h3>
                 <Swiper
                   class="custom-swiper"
                   :modules="modules"
@@ -38,20 +50,29 @@
           </div>
 
           <!-- Full Description -->
-          <div v-if="projectData?.fullDescription" class="full-description">
-            <h3>Description</h3>
-            <div v-html="projectData.fullDescription"></div>
+          <div v-if="projectData?.fullDescription" class="content-section">
+            <h3 class="section-title">
+              <span class="section-icon">📝</span>
+              Description
+            </h3>
+            <div class="section-content" v-html="projectData.fullDescription"></div>
           </div>
 
           <!-- My Role -->
-          <div v-if="projectData?.role && projectData.role.trim() !== ''" class="my-role">
-            <h3>My Role</h3>
-            <div v-html="projectData.role"></div>
+          <div v-if="projectData?.role && projectData.role.trim() !== ''" class="content-section">
+            <h3 class="section-title">
+              <span class="section-icon">👤</span>
+              My Role
+            </h3>
+            <div class="section-content" v-html="projectData.role"></div>
           </div>
 
           <!-- Links -->
-          <div v-if="projectData?.links && projectData.links.length > 0" class="links-section">
-            <h3>Links</h3>
+          <div v-if="projectData?.links && projectData.links.length > 0" class="content-section">
+            <h3 class="section-title">
+              <span class="section-icon">🔗</span>
+              Links
+            </h3>
             <div class="links-grid">
               <a 
                 v-for="link in projectData.links" 
@@ -68,8 +89,14 @@
           </div>
 
         </div>
-        <div class="dialog-bottom">
-          <a @click="$emit('close')" class="dialog-close-button">Close</a>
+        <div class="dialog-footer">
+          <button @click="$emit('close')" class="close-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            Close
+          </button>
         </div>
       </div>
     </div>
@@ -174,7 +201,7 @@ export default defineComponent({
     pauseAllVideos() {
       // For YouTube embeds, we can't directly control playback due to iframe restrictions
       // But we can send pause messages to all iframes
-      const iframes = document.querySelectorAll<HTMLIFrameElement>('.media-slider iframe');
+      const iframes = document.querySelectorAll<HTMLIFrameElement>('.media-section iframe, .media-slider iframe');
       iframes.forEach((iframe) => {
         try {
           iframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
@@ -185,7 +212,7 @@ export default defineComponent({
     },
     playCurrentVideo() {
       // For YouTube embeds, ensure muted then play (autoplay policies)
-      const iframes = document.querySelectorAll<HTMLIFrameElement>('.media-slider iframe');
+      const iframes = document.querySelectorAll<HTMLIFrameElement>('.media-section iframe, .media-slider iframe');
       const target = iframes[this.currentSlideIndex];
       if (target) {
         try {
@@ -227,110 +254,158 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.overlay {
-  background-color: rgba(0,0,0,0.5);
-  z-index: 10;
-  position:fixed;
-  top:0px;
-  left:0px;
-  right:0px;
-  bottom: 0px;
-}
-
-.dialog {
-  position:absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 11;
-  margin: 20px;
-  padding-bottom: 10px;
-  color:white;
-  overflow: hidden; /* keep all content inside the popup */
-}
-
-iframe {
-  width: 100%;
-}
-
-h1.dialog-title {
-  text-align: center;
-  font-size: 1.3em;
-  margin: 0px;
-  padding: 22px;
-}
-
-.dialog-content {
-  padding: 20px;
-}
-
-.dialog-content {
-  background-color: #fcfcfc;
-  color: #696969;
-}
-.dialog-close {
+.overlay-wrapper {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor:pointer;
-  font-size: 1.2em;
-  font-weight: 100;
-  z-index: 12;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1001;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1002;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background: rgba(20, 20, 25, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dialog-header {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dialog-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dialog-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.dialog-content {
+  padding: 32px;
+  overflow-y: auto;
+  flex: 1;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dialog-footer {
+  padding: 20px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.close-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
-.dialog-close:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
-}
 
-.dialog-bottom {
-  text-align: center;
-}
-
-a.dialog-close-button {
-  cursor:pointer;
-  font-size: 1.4em;
-  display: inline-block;
-  margin: 0 auto;
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Content sections */
-.short-description,
-.full-description,
-.my-role,
-.links-section {
-  margin-bottom: 30px;
+.content-section {
+  margin-bottom: 40px;
 }
 
-.short-description h3,
-.full-description h3,
-.my-role h3,
-.links-section h3 {
-  color: #333;
-  margin-bottom: 15px;
-  font-size: 1.2em;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 5px;
+.content-section:last-child {
+  margin-bottom: 0;
 }
 
-.short-description p,
-.full-description p,
-.my-role p {
-  line-height: 1.6;
-  margin: 0;
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-icon {
+  font-size: 1.3rem;
+}
+
+.section-content {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.section-content p {
+  margin: 0 0 12px 0;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
 }
 
 /* Media Slider */
 .media-slider {
-  margin-bottom: 30px;
+  margin-bottom: 0;
   position: relative;
 }
 
@@ -521,54 +596,81 @@ a.dialog-close-button {
 .links-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  gap: 12px;
 }
 
 .link-button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: #f5f5f5;
-  color: #333;
+  gap: 10px;
+  padding: 14px 20px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: all 0.3s ease;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-weight: 500;
 }
 
 .link-button:hover {
-  background: #e9e9e9;
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
 }
 
 .link-button i {
   font-size: 0.9em;
 }
 
-@media only screen and (min-width: 620px){
-  .dialog {
-    margin: 0 auto;
-    margin-top: 80px;
-    margin-bottom: 40px;
-    max-width: 1000px;
+/* Media Section */
+.media-section {
+  margin-bottom: 40px;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  .overlay-wrapper {
+    padding: 10px;
   }
 
-  h1.dialog-title {
-    font-size: 1.6em;
+  .dialog {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .dialog-header {
+    padding: 20px;
+  }
+
+  .dialog-title {
+    font-size: 1.4rem;
   }
 
   .dialog-content {
-    padding: 40px;
+    padding: 24px 20px;
   }
 
-  .media-slider iframe {
-    height: 400px;
+  .dialog-footer {
+    padding: 16px 20px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .section-content {
+    font-size: 1rem;
   }
 
   .links-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
@@ -603,9 +705,30 @@ a.dialog-close-button {
 .custom-swiper :deep(iframe) {
   max-height: 80vh;
   max-width: 100%;
-  object-fit: contain; /* Keeps aspect ratio, no cropping */
-  border-radius: 8px;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active .dialog,
+.fade-leave-active .dialog {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fade-enter-from .dialog,
+.fade-leave-to .dialog {
+  transform: scale(0.95);
+  opacity: 0;
+}
 
 </style>
