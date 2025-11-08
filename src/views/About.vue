@@ -46,7 +46,7 @@
             <li>C# / C++ gameplay programming & optimization</li>
             <li>AI, animation, physics, and system integration</li>
             <li>UI/UX implementation and interactive menus</li>
-            <li>Multiplayer and real-time features</li>
+            <li>Multiplayer & Real-time Systems (Photon · Mirror · Socket.IO)</li>
             <li>Profiling, debugging, and performance tuning</li>
             <li>Close collaboration with art & design teams</li>
           </ul>
@@ -77,8 +77,8 @@
         <div class="skill-category">
           <h3>Software</h3>
           <ul>
-            <li>Visual Studio, Cursor, Plastic SCM, Github</li>
-            <li>Adobe Photoshop</li>
+            <li>Unity Engine, Visual Studio, Cursor, Plastic SCM, Github</li>
+            <li>Blender, Adobe Photoshop</li>
             <li>Figma, Trello</li>
           </ul>
         </div>
