@@ -3,7 +3,9 @@
   "gameProjects": [
     {
       "id": "1_narqubis",
-      "override": {}
+      "override": {
+        "name": "Narqubis : FPS multiplayer with story mode & AI. Built with Unity URP."
+      }
     },
     {
       "id": "20_MatchMaster",
