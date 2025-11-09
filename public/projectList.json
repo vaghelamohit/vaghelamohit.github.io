@@ -4,16 +4,20 @@
     {
       "id": "1_narqubis",
       "override": {
-        "name": "Narqubis : TPS multiplayer with story mode & AI. Built with Unity URP."
+        "name": "Narqubis : TPS Multiplayer with Story Mode & AI | 100K+ Downloads"
       }
     },
     {
       "id": "20_MatchMaster",
-      "override": {}
+      "override": {
+        "name": "Narqubis Match 3 : PvP Match-3"
+      }
     },
     {
       "id": "34_HungerFeed",
-      "override": {}
+      "override": {
+        "name": "HungerFeed : Match 3 Puzzle"
+      }
     },
     {
       "id": "30_CoinGrid",
