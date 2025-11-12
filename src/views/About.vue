@@ -9,7 +9,7 @@
         <div class="hero-subtitle">Senior Game Developer</div>
         <div class="hero-description">
           <p>With 8+ years of experience building and shipping Unity games on mobile and PC. Focused on gameplay systems, performance, and smooth player experience. Comfortable owning features end-to-end and collaborating across disciplines.</p>
-          <p class="hero-cta">Open to opportunities — feel free to <router-link to="/contact" class="contact-link">contact me</router-link>.</p>
+          <p class="hero-cta">Open to opportunities feel free to <router-link to="/contact" class="contact-link">contact me</router-link>.</p>
         </div>
         <div class="hero-contact-info">
           <div class="email-text">
@@ -40,46 +40,35 @@
 
       <div class="skills-grid">
         <div class="skill-category">
-          <h3>Programming</h3>
+          <h3>Game Development</h3>
           <ul>
-            <li>Game development in Unity.</li>
-            <li>C# / C++ gameplay programming & optimization</li>
-            <li>AI, animation, physics, and system integration</li>
-            <li>UI/UX implementation and interactive menus</li>
-            <li>Multiplayer & Real-time Systems (Photon · Mirror · Socket.IO)</li>
-            <li>Profiling, debugging, and performance tuning</li>
-            <li>Close collaboration with art & design teams</li>
+            <li>Unity Engine, C# </li>
+            <li>Gameplay systems architecture, rapid prototyping, and live feature delivery.</li>
+            <li>AI, animation, physics, and technical integrations across disciplines.</li>
+            <li>Multiplayer & real-time services (Photon · Mirror · Socket.IO).</li>
+            <li>Profiling, debugging, and performance optimization throughout production.</li>
           </ul>
         </div>
 
         <div class="skill-category">
-          <h3>Leadership</h3>
+          <h3>Game Design</h3>
           <ul>
-            <li>Mentored junior developers & designers to enhance team performance.</li>
-            <li>Led projects from concept to launch across multiple platforms.</li>
-            <li>Coordinated cross-functional teams for aligned vision and execution.</li>
-            <li>Talent recruiting, hiring, and team building.</li>
-            <li>Oversaw gameplay direction, system design, and iterative playtests.</li>
-            <li>Streamlined development workflows and optimized pipelines.</li>
+            <li>Level layout & blockouts that balance flow, challenge, and readability.</li>
+            <li>Combat encounters, pacing, and systems tuning for engaging play.</li>
+            <li>Narrative, cinematic, and event scripting for immersive storytelling beats.</li>
+            <li>UI/UX implementation, interactive menus, and player journey refinements.</li>
+            <li>Cross-discipline collaboration, playtesting, and iteration loops.</li>
           </ul>
         </div>
 
         <div class="skill-category">
-          <h3>Level Design</h3>
+          <h3>Development & Design Tools</h3>
           <ul>
-            <li>Level layout & blockouts: crafting engaging, playable spaces with clear flow.</li>
-            <li>Combat encounters & pacing: designing challenges that feel balanced and dynamic.</li>
-            <li>Cinematic & event scripting: creating immersive story-driven moments.</li>
-            <li>Game system integration: ensuring levels complement overall mechanics.</li>
-          </ul>
-        </div>
-
-        <div class="skill-category">
-          <h3>Software</h3>
-          <ul>
-            <li>Unity Engine, Visual Studio, Cursor, Plastic SCM, Github</li>
-            <li>Blender, Adobe Photoshop</li>
-            <li>Figma, Trello</li>
+            <li>Unity, Visual Studio, Cursor and custom tooling workflows.</li>
+            <li>Git, Plastic SCM, GitHub.</li>
+            <li>Blender, Adobe Photoshop for 3D & 2D support.</li>
+            <li>Figma,Trello for collaborative planning.</li>
+            <li>Analytics, live-ops for data-informed updates.</li>
           </ul>
         </div>
       </div>
@@ -99,8 +88,8 @@
             <span class="date-range">Jan 2023 – Present</span>
             <span class="separator">•</span>
             <span>Full-time</span>
-            <span class="separator">•</span>
-            <span>Rajkot</span>
+            
+            
           </div>
           <div class="experience-description">
             Leading gameplay features and shipping updates for live titles. Owning end-to-end delivery from prototyping to release with a focus on polish, performance, and player experience.
@@ -295,6 +284,7 @@ export default defineComponent({
   .name {
     font-size: 3.5rem;
   }
+
 }
 
 .hero-subtitle {
@@ -662,6 +652,12 @@ export default defineComponent({
   }
 }
 
+@media only screen and (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .skill-category {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -708,8 +704,8 @@ export default defineComponent({
 
 /* Education Styling */
 .education-timeline {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -776,6 +772,18 @@ export default defineComponent({
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.95rem;
+}
+
+@media only screen and (min-width: 640px) {
+  .education-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .education-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media only screen and (max-width: 640px) {
