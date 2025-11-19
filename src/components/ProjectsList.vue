@@ -105,13 +105,22 @@ export default defineComponent({
       this.openProjectOverlay(item, false);
     },
     getIconSrc(project: ProjectData): string {
-      const path = project.iconUrl || '';
+      const path = (project.iconUrl || '').trim();
       if (!path) return '';
       if (path.startsWith('http')) return path;
-      // ensure baseUrl ends with slash
-      const base = project.baseUrl || '';
-      if (base.endsWith('/')) return base + path;
-      return base + '/' + path;
+
+      const base = (project.baseUrl || '').trim();
+      const isPublicAsset = path.startsWith('/');
+
+      // If the asset already points to the public folder (e.g. /icon/...), use it directly.
+      if (!base || isPublicAsset) {
+        if (isPublicAsset) return path;
+        return `/${path}`;
+      }
+
+      const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base;
+      const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+      return `${normalizedBase}/${normalizedPath}`;
     },
     closeOverlay: function () {
       this.showPopup = false;
