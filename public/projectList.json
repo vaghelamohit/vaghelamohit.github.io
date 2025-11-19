@@ -47,7 +47,9 @@
     },
     {
       "id": "26_TeenPatti",
-      "override": {}
+      "override": {
+        "iconUrl": "/icon/Teenpatti_icon.mp4"
+      }
     },
     {
       "id": "27_LiveMCL_Quiz",
