@@ -29,33 +29,80 @@ export default defineComponent({
 fetch(`${import.meta.env.BASE_URL}projectList.json`)
   .then(response => response.json())
   .then(async projectList => {
-  const globalBaseUrl = projectList.baseUrl;
+    const globalBaseUrl = projectList.baseUrl;
     const preloadImages: string[] = [];
+    const preloadVideos: string[] = [];
 
     const gameProjects = Array.isArray(projectList.gameProjects) ? projectList.gameProjects : [];
     const otherProjects = Array.isArray(projectList.otherProjects) ? projectList.otherProjects : [];
 
+    // Helper function to process override preload items
+    const processOverridePreload = (preloadItems: string[], baseUrl: string, projectId: string) => {
+      preloadItems.forEach((item: string) => {
+        let fullUrl: string;
+        if (item.startsWith('http')) {
+          // Absolute URL
+          fullUrl = item;
+        } else if (item.startsWith('/')) {
+          // Absolute path - public folder asset, use it directly from domain root
+          // Public folder assets are served from the domain root, not relative to BASE_URL
+          fullUrl = `${window.location.origin}${item}`;
+        } else {
+          // Relative to project folder
+          fullUrl = `${baseUrl}${projectId}/${item}`;
+        }
+        if (item.match(/\.(mp4|webm|ogg|mov)$/i)) {
+          preloadVideos.push(fullUrl);
+        } else {
+          preloadImages.push(fullUrl);
+        }
+      });
+    };
+
     const projectPromises = [
-      ...gameProjects.map(async (project: { id: string; baseUrl?: string }) => {
+      ...gameProjects.map(async (project: { id: string; baseUrl?: string; override?: { preload?: string[] } }) => {
         const baseUrl = project.baseUrl || globalBaseUrl;
-        const response = await fetch(`${baseUrl}${project.id}/data.json`);
-        const data = await response.json();
-        if (data.preloadImages && Array.isArray(data.preloadImages)) {
-          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
+        
+        // Check for override.preload first
+        if (project.override?.preload && Array.isArray(project.override.preload)) {
+          processOverridePreload(project.override.preload, baseUrl, project.id);
+        }
+        
+        // Also check data.json for preloadImages
+        try {
+          const response = await fetch(`${baseUrl}${project.id}/data.json`);
+          const data = await response.json();
+          if (data.preloadImages && Array.isArray(data.preloadImages)) {
+            preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
+          }
+        } catch (error) {
+          // Silently fail if data.json doesn't exist
         }
       }),
-      ...otherProjects.map(async (project: { id: string; baseUrl?: string }) => {
+      ...otherProjects.map(async (project: { id: string; baseUrl?: string; override?: { preload?: string[] } }) => {
         const baseUrl = project.baseUrl || globalBaseUrl;
-        const response = await fetch(`${baseUrl}${project.id}/data.json`);
-        const data = await response.json();
-        if (data.preloadImages && Array.isArray(data.preloadImages)) {
-          preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
+        
+        // Check for override.preload first
+        if (project.override?.preload && Array.isArray(project.override.preload)) {
+          processOverridePreload(project.override.preload, baseUrl, project.id);
+        }
+        
+        // Also check data.json for preloadImages
+        try {
+          const response = await fetch(`${baseUrl}${project.id}/data.json`);
+          const data = await response.json();
+          if (data.preloadImages && Array.isArray(data.preloadImages)) {
+            preloadImages.push(...data.preloadImages.map((img: string) => `${baseUrl}${project.id}/${img}`));
+          }
+        } catch (error) {
+          // Silently fail if data.json doesn't exist
         }
       })
     ];
 
     await Promise.all(projectPromises);
     Helpers.preloadImages(preloadImages);
+    Helpers.preloadVideos(preloadVideos);
   })
   .catch(error => {
     console.error('Error loading project list or preloading images:', error);
